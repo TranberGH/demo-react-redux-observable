@@ -1,14 +1,13 @@
 import { fromFetch } from 'rxjs/fetch';
-import { Api } from '../../core';
+import { filter } from 'rxjs/operators';
+import { ActionsObservable } from 'redux-observable';
 
-function getAllRegions() {
-  Api.getAllRegions()
-  .then(response => response.json())
-  .then(result => {
-    // this.setState({ regions: result})
-  })
-}
+import { FETCH_REGIONS } from '../actions';
+
+const getAllRegionsEpic = (action$: any) => action$.pipe(
+  filter((action: any) => action.type === FETCH_REGIONS)
+)
 
 export {
-  getAllRegions,
+  getAllRegionsEpic,
 }

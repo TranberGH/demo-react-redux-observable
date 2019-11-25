@@ -1,14 +1,12 @@
 import { combineEpics } from 'redux-observable';
 import { combineReducers } from 'redux';
-import ping, { pingEpic } from './ping';
-import users, { fetchUserEpic } from './users';
+import { regions } from './reducers';
+import { getAllRegionsEpic } from './epics';
 
 export const rootEpic = combineEpics(
-  pingEpic,
-  fetchUserEpic
+  getAllRegionsEpic,
 );
 
 export const rootReducer = combineReducers({
-  ping,
-  users
+  regions,
 });
