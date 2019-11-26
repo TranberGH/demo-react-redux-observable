@@ -80,6 +80,9 @@ const config = {
         template: require('html-webpack-template'),
         inject: false,
         appMountId: 'app',
+        title: 'Recherche des communes',
+        lang: 'fr-FR',
+        mobile: true,
       }),
       new MiniCssExtractPlugin({
         // Options similar to the same options in webpackOptions.output

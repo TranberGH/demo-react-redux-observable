@@ -14,11 +14,9 @@ export default function Page(props: any) {
       </header>
       <main className="page-content">
       <Router>
-      <>
       <Route path="/" exact component={Home}/>
       <Route path="/city/:cityId" component={City}/>
       <Route path="/regions" component={Regions}/>
-      </>
       </Router>
       </main>
       <footer className="app-footer">

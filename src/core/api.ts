@@ -22,6 +22,10 @@ async function getAllRegions() {
   return fetch(`${zonesApi}${createPath(['regions'])}`);
 }
 
+function getAllRegionsUrl() {
+  return `${zonesApi}${createPath(['regions'])}`;
+}
+
 /**
  * Get departements in one region
  * @param regionCode {string} - Code of a region
@@ -43,4 +47,6 @@ export {
   getAllRegions,
   getDepartementsByRegion,
   getCitiesByDepartement,
+// Urls
+  getAllRegionsUrl,
 }
