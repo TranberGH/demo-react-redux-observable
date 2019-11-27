@@ -4,7 +4,7 @@ import {
   FETCH_REGIONS_ERROR,
 } from './constants';
 
-import { Region } from '../../types';
+import { Region } from '#/types';
 
 function fetchRegions() {
   return {

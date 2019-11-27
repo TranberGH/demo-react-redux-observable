@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
+import { Region } from '#/types';
 import { OPTION_NONE } from '../../core';
-import { Region } from '../../types';
 
 import './Regions.scss';
 
