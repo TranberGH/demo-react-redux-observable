@@ -11,6 +11,7 @@ let regionsState = {
 function regions(state = regionsState, action: any) {
   switch(action.type) {
     case FETCH_REGIONS_SUCCESS:
+      console.log('action  : ', action)
       return Object.assign({}, state, { regions: action.payload});
     case FETCH_REGIONS_ERROR:
       return Object.assign({}, state, { error: action.payload});

@@ -13,6 +13,7 @@ function fetchRegions() {
 }
 
 function fetchRegionsSuccess(payload: Region[]) {
+  console.log('payload regions : ', payload)
   return {
     type: FETCH_REGIONS_SUCCESS,
     payload,

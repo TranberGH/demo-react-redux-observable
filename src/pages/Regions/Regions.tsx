@@ -1,60 +1,61 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-import { Region } from '#/types';
+import {
+  Region,
+  Departement,
+} from '../../types';
 import { OPTION_NONE } from '../../core';
+import {
+  fetchDepartements,
+} from '../../store/actions';
 
 import './Regions.scss';
 
 interface RegionsProps {
   regions: Region[];
-  departements: any[];
+  departements: Departement[];
   cities: any[];
-  getDepartements: (regionCode: string) => void;
+  // getDepartements: (regionCode: string) => void;
   getCities: (departementCode: string) => void;
 }
 
-class Regions extends React.Component<RegionsProps, any> {
-  constructor(props: RegionsProps) {
-    super(props);
+function Regions(props: RegionsProps) {
+  const dispatch = useDispatch();
 
-    this.getDepartements = this.getDepartements.bind(this);
-    this.getCities = this.getCities.bind(this);
-  }
-
-  getDepartements(evt: React.SyntheticEvent) {
+  function getDepartements(evt: React.SyntheticEvent) {
     const select = evt.target as HTMLSelectElement;
-    this.props.getDepartements(select.options[select.selectedIndex].value)
+    dispatch(fetchDepartements(select.options[select.selectedIndex].value));
   }
 
-  getCities(evt: React.SyntheticEvent) {
+  function getCities(evt: React.SyntheticEvent) {
     const select = evt.target as HTMLSelectElement;
-    this.props.getCities(select.options[select.selectedIndex].value)
+    props.getCities(select.options[select.selectedIndex].value)
   }
 
-  render() {
-    return (
-      <>
-      <p className="top-block"><Link to="/">Accueil</Link></p>
-      <h2 className="search-title">Rechercher par régions et départements</h2>
-      <p className="choice-block"><select onChange={this.getDepartements}>
-        <option key={`region-${OPTION_NONE}`} value={OPTION_NONE}>Choisissez une région</option>
-        { this.props.regions.map(region => <option key={`region-${region.code}`} value={region.code}>{region.nom}</option>)}
-      </select></p>
-      { this.props.departements.length > 0 && <p className="choice-block"><select onChange={this.getCities}>
-      <option key={`departement-${OPTION_NONE}`} value={OPTION_NONE}>Choisissez un département</option>
-        { this.props.departements.map(departement => <option key={`departement-${departement.code}`} value={departement.code}>{departement.nom}</option>)}
-      </select></p> }
-      { this.props.cities.length > 0 && <ul className="cities-list">
-        { this.props.cities.map( city => (
-          <li key={`city-${city.code}`} className="city-item">
-            { city.nom }
-          </li>
-        ))}
-      </ul> }
-      </>
-    )
-  }
+  console.log('regions props : ', props)
+  return (
+    <>
+    <p className="top-block"><Link to="/">Accueil</Link></p>
+    <h2 className="search-title">Rechercher par régions et départements</h2>
+    <p className="choice-block"><select onChange={getDepartements}>
+      <option key={`region-${OPTION_NONE}`} value={OPTION_NONE}>Choisissez une région</option>
+      { props.regions.map(region => <option key={`region-${region.code}`} value={region.code}>{region.nom}</option>)}
+    </select></p>
+    { props.departements.length > 0 && <p className="choice-block"><select onChange={getCities}>
+    <option key={`departement-${OPTION_NONE}`} value={OPTION_NONE}>Choisissez un département</option>
+      { props.departements.map(departement => <option key={`departement-${departement.code}`} value={departement.code}>{departement.nom}</option>)}
+    </select></p> }
+    { props.cities.length > 0 && <ul className="cities-list">
+      { props.cities.map( city => (
+        <li key={`city-${city.code}`} className="city-item">
+          { city.nom }
+        </li>
+      ))}
+    </ul> }
+    </>
+  )
 }
 
 export default Regions;

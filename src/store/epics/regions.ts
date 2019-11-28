@@ -12,15 +12,15 @@ import { Region } from '../../types';
 
 const getAllRegionsEpic = (action$: any) => action$.pipe(
   ofType(FETCH_REGIONS),
-  mergeMap(action => fromFetch(Api.getAllRegionsUrl()).pipe(
-      map(response => {
+  mergeMap(() => fromFetch(Api.getAllRegionsUrl()).pipe(
+      mergeMap(response => {
         const resp: Promise<Region[]> = response.json()
         return from(resp)
       })
     )
   ),
   map((regions: Region[]) => {
-    fetchRegionsSuccess(regions)
+    return fetchRegionsSuccess(regions)
   })
 )
 

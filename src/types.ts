@@ -3,6 +3,11 @@ interface Region {
   code: string;
 }
 
+interface Departement {
+  nom: string;
+  code: string;
+}
+
 // Compliant action with "Flux Standard Action"
 interface FSAction {
   type: string;
@@ -13,6 +18,7 @@ interface FSAction {
 
 export {
   Region,
+  Departement,
 
   // Actions
   FSAction,

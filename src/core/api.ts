@@ -3,10 +3,6 @@ import { createRequestParameters, createPath } from './query';
 const searchApiUrl = 'https://api-adresse.data.gouv.fr/search/';
 const zonesApi = 'https://geo.api.gouv.fr/';
 
-/**
- * Search cities from adress
- * @param q {string} - Adress
- */
 async function search(q: string) {
   const searchParams = [
     ['q', encodeURIComponent(q)],
@@ -15,13 +11,33 @@ async function search(q: string) {
   return fetch(`${searchApiUrl}${createRequestParameters(searchParams)}`);
 }
 
-/**
- * Get all regions for France
- */
 async function getAllRegions() {
   return fetch(`${zonesApi}${createPath(['regions'])}`);
 }
 
+async function getDepartementsByRegion(regionCode: string) {
+  return fetch(`${zonesApi}${createPath(['regions', regionCode, 'departements'])}`);
+}
+
+async function getCitiesByDepartement(departementCode: string) {
+  return fetch(`${zonesApi}${createPath(['departements', departementCode, 'communes'])}`);
+}
+
+/**
+ * Search cities from adress
+ * @param q {string} - Adress
+ */
+function searchUrl(q: string) {
+  const searchParams = [
+    ['q', encodeURIComponent(q)],
+    ['limit', '20'],
+  ];
+  return `${searchApiUrl}${createRequestParameters(searchParams)}`;
+}
+
+/**
+ * Get all regions for France
+ */
 function getAllRegionsUrl() {
   return `${zonesApi}${createPath(['regions'])}`;
 }
@@ -30,16 +46,16 @@ function getAllRegionsUrl() {
  * Get departements in one region
  * @param regionCode {string} - Code of a region
  */
-async function getDepartementsByRegion(regionCode: string) {
-  return fetch(`${zonesApi}${createPath(['regions', regionCode, 'departements'])}`);
+function getDepartementsByRegionUrl(regionCode: string) {
+  return `${zonesApi}${createPath(['regions', regionCode, 'departements'])}`;
 }
 
 /**
  * Get cities in one departement
  * @param departementCode {string} - Departement code
  */
-async function getCitiesByDepartement(departementCode: string) {
-  return fetch(`${zonesApi}${createPath(['departements', departementCode, 'communes'])}`);
+function getCitiesByDepartementUrl(departementCode: string) {
+  return `${zonesApi}${createPath(['departements', departementCode, 'communes'])}`;
 }
 
 export {
@@ -49,4 +65,7 @@ export {
   getCitiesByDepartement,
 // Urls
   getAllRegionsUrl,
+  searchUrl,
+  getDepartementsByRegionUrl,
+  getCitiesByDepartementUrl,
 }
