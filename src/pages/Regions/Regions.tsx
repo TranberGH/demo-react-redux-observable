@@ -18,6 +18,7 @@ interface RegionsProps {
 }
 
 function Regions(props: RegionsProps) {
+
   function fetchDepartements(evt: React.SyntheticEvent) {
     const select = evt.target as HTMLSelectElement;
     props.fetchDepartements(select.options[select.selectedIndex].value);
