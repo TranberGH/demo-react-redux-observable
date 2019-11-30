@@ -84,7 +84,7 @@ const mapStateToProps = (state: any) => ({
 
 const mapDispatchToProps = (dispatch: any) => ({
   fetchRegions: dispatch(fetchRegions()),
-  // fetchDepartements: (regionCode: string) => dispatch(fetchDepartements(regionCode)),
+  fetchDepartements: (regionCode: string) => dispatch(fetchDepartements(regionCode)),
   getCities: () => []
 })
 
