@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import {
   Region,
   Departement,
+  City
 } from '../../types';
 import { OPTION_NONE } from '../../core';
 
@@ -12,13 +13,12 @@ import './Regions.scss';
 interface RegionsProps {
   regions: Region[];
   departements: Departement[];
-  cities: any[];
+  cities: City[];
   fetchDepartements: (regionCode: string) => void;
   fetchCities: (departementCode: string) => void;
 }
 
 function Regions(props: RegionsProps) {
-
   function fetchDepartements(evt: React.SyntheticEvent) {
     const select = evt.target as HTMLSelectElement;
     props.fetchDepartements(select.options[select.selectedIndex].value);
@@ -29,7 +29,6 @@ function Regions(props: RegionsProps) {
     props.fetchCities(select.options[select.selectedIndex].value)
   }
 
-  console.log('regions props : ', props)
   return (
     <>
     <p className="top-block"><Link to="/">Accueil</Link></p>

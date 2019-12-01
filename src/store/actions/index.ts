@@ -10,6 +10,12 @@ import {
   fetchDepartementsError,
 } from './departements'
 
+import {
+  fetchCities,
+  fetchCitiesSuccess,
+  fetchCitiesError,
+} from './cities'
+
 export * from './constants';
 
 export {
@@ -22,4 +28,9 @@ export {
   fetchDepartements,
   fetchDepartementsSuccess,
   fetchDepartementsError,
+
+  // Cités
+  fetchCities,
+  fetchCitiesSuccess,
+  fetchCitiesError,
 }

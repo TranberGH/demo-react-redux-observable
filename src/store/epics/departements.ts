@@ -8,22 +8,32 @@ import {
   fetchDepartementsSuccess,
 } from '../actions';
 
+import {
+  getDepartementsByRegion,
+  hasDepartementsForRegion,
+} from '../selectors';
+
 import { Api } from '../../core';
 import { Departement, FSAction } from '../../types';
 
-const getDepartementsByRegionEpic = (action$: any) => action$.pipe(
+const getDepartementsByRegionEpic = (action$: any, state$: any) => action$.pipe(
   ofType(FETCH_DEPARTEMENTS),
-  mergeMap((action: FSAction) => fromFetch(Api.getDepartementsByRegionUrl(action.payload)).pipe(
-      mergeMap(response => {
-        console.log('action epic : ', action)
-        const resp: Promise<Departement[]> = response.json()
-        return from(resp)
-      })
-    )
-  ),
+  mergeMap((action: FSAction) => {
+    const canFetch = !hasDepartementsForRegion(action.payload, state$.value);
+    // console.log('can fetch : ', canFetch, action.payload, state$.value)
+    if (canFetch) {
+      return fromFetch(Api.getDepartementsByRegionUrl(action.payload)).pipe(
+        mergeMap(response => {
+          const resp: Promise<Departement[]> = response.json()
+          return from(resp)
+        })
+      )
+    }
+    // console.log('dept : ', getDepartementsByRegion(state$.value))
+    return from<Departement[]>(getDepartementsByRegion(state$.value))
+  }),
   map((departements: Departement[]) => {
-    console.log('action end : ', action$)
-    return fetchDepartementsSuccess(departements)
+    return fetchDepartementsSuccess({ region: state$.value.departements.region, departements })
   })
 )
 

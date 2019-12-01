@@ -13,8 +13,7 @@ function fetchDepartements(payload: string) {
   }
 }
 
-function fetchDepartementsSuccess(payload: Departement[]/*{ departements: Departement[], codeRegion: string }*/) {
-  console.log('payload departements : ', payload)
+function fetchDepartementsSuccess(payload: { region: string, departements: Departement[] }) {
   return {
     type: FETCH_DEPARTEMENTS_SUCCESS,
     payload,

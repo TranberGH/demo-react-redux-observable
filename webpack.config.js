@@ -38,6 +38,7 @@ const config = {
           {
             loader: 'sass-loader',
             options: {
+              // data: `@import "${path.resolve(__dirname, 'assets/scss/styles.scss')}`,
               // Prefer `dart-sass`
               implementation: require('sass'),
             },

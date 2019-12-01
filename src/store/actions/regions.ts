@@ -4,7 +4,7 @@ import {
   FETCH_REGIONS_ERROR,
 } from './constants';
 
-import { Region } from '#/types';
+import { Region } from '../../types';
 
 function fetchRegions() {
   return {
@@ -13,7 +13,6 @@ function fetchRegions() {
 }
 
 function fetchRegionsSuccess(payload: Region[]) {
-  console.log('payload regions : ', payload)
   return {
     type: FETCH_REGIONS_SUCCESS,
     payload,
