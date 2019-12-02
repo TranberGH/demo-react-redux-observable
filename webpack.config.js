@@ -73,7 +73,7 @@ const config = {
     }
   },
   devServer: {
-    contentBase: './dist',
+    contentBase: path.resolve(__dirname, 'dist'),
     historyApiFallback: true,
   },
   plugins: [
@@ -84,6 +84,7 @@ const config = {
         title: 'Recherche des communes',
         lang: 'fr-FR',
         mobile: true,
+        baseHref: '/',
       }),
       new MiniCssExtractPlugin({
         // Options similar to the same options in webpackOptions.output

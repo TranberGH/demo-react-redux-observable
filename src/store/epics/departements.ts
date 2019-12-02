@@ -20,7 +20,6 @@ const getDepartementsByRegionEpic = (action$: any, state$: any) => action$.pipe(
   ofType(FETCH_DEPARTEMENTS),
   mergeMap((action: FSAction) => {
     const canFetch = !hasDepartementsForRegion(action.payload, state$.value);
-    // console.log('can fetch : ', canFetch, action.payload, state$.value)
     if (canFetch) {
       return fromFetch(Api.getDepartementsByRegionUrl(action.payload)).pipe(
         mergeMap(response => {
@@ -29,8 +28,7 @@ const getDepartementsByRegionEpic = (action$: any, state$: any) => action$.pipe(
         })
       )
     }
-    // console.log('dept : ', getDepartementsByRegion(state$.value))
-    return from<Departement[]>(getDepartementsByRegion(state$.value))
+    return from<Promise<Departement[]>>(Promise.resolve(getDepartementsByRegion(state$.value)))
   }),
   map((departements: Departement[]) => {
     return fetchDepartementsSuccess({ region: state$.value.departements.region, departements })

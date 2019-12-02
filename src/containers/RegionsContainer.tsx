@@ -8,7 +8,6 @@ import {
 } from '../store/actions';
 import {
   getDepartementsByRegion,
-  hasDepartementsForRegion,
   getCitiesByDepartement,
 } from '../store/selectors';
 
