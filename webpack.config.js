@@ -3,6 +3,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const sassRootDir = 'src/assets/scss/';
+
 const config = {
   entry: [
     'react-hot-loader/patch',
@@ -38,9 +40,19 @@ const config = {
           {
             loader: 'sass-loader',
             options: {
-              // data: `@import "${path.resolve(__dirname, 'assets/scss/styles.scss')}`,
               // Prefer `dart-sass`
               implementation: require('sass'),
+            },
+          },
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              // Or array of paths
+              resources: [
+                path.resolve(__dirname, sassRootDir, 'variables.scss'),
+                path.resolve(__dirname, sassRootDir, 'reset.scss'),
+                // path.resolve(__dirname, sassRootDir, 'styles.scss'),
+              ]
             },
           },
         ]
