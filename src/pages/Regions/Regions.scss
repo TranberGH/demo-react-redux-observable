@@ -4,6 +4,12 @@
   select {
     font-family: inherit;
     font-size: .9em;
+    border-radius: .2em;
+    border: $input-border;
+    padding: .5em 1em;
+    font-weight: bold;
+    background-color: $light-color;
+    min-width: 20em;
   }
 }
 

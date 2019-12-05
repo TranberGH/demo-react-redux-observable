@@ -4,13 +4,17 @@
 
 .search-field {
   width: 100%;
-  border: 1px solid #999;
+  border: $input-border;
   border-radius: 0.5em;
   padding: .5em 1em;
   outline: none;
   box-sizing: border-box;
   font-family: inherit;
   font-size: 1em;
+
+  &::placeholder {
+    color: $main-color;
+  }
 }
 
 .search-title {
