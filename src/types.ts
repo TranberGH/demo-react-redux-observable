@@ -7,6 +7,7 @@ interface Departement {
   nom: string;
   code: string;
 }
+
 interface City {
   nom: string;
   code: string;

@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { Api } from '../core';
-
 import { Home } from '../pages';
 
 /**
@@ -17,7 +16,7 @@ class HomeContainer extends React.Component<any, any> {
 
     this.searchCities = this.searchCities.bind(this);
   }
-
+// A modifier -> store
   searchCities(q: string) {
     if (q) {
       Api.search(q)

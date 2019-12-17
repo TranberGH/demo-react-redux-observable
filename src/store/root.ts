@@ -12,14 +12,19 @@ import {
   getCitiesByDepartementEpic,
 } from './epics';
 
-export const rootEpic = combineEpics(
+const rootEpic = combineEpics(
   getAllRegionsEpic,
   getDepartementsByRegionEpic,
   getCitiesByDepartementEpic,
 );
 
-export const rootReducer = combineReducers({
+const rootReducer = combineReducers({
   regions,
   departements,
   cities,
 });
+
+export {
+  rootEpic,
+  rootReducer,
+}

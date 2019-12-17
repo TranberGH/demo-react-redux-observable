@@ -11,18 +11,6 @@ async function search(q: string) {
   return fetch(`${searchApiUrl}${createRequestParameters(searchParams)}`);
 }
 
-async function getAllRegions() {
-  return fetch(`${zonesApi}${createPath(['regions'])}`);
-}
-
-async function getDepartementsByRegion(regionCode: string) {
-  return fetch(`${zonesApi}${createPath(['regions', regionCode, 'departements'])}`);
-}
-
-async function getCitiesByDepartement(departementCode: string) {
-  return fetch(`${zonesApi}${createPath(['departements', departementCode, 'communes'])}`);
-}
-
 /**
  * Search cities from adress
  * @param q {string} - Adress
@@ -60,9 +48,7 @@ function getCitiesByDepartementUrl(departementCode: string) {
 
 export {
   search,
-  getAllRegions,
-  getDepartementsByRegion,
-  getCitiesByDepartement,
+
 // Urls
   getAllRegionsUrl,
   searchUrl,

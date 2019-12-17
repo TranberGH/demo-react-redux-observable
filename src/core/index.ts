@@ -1,9 +1,11 @@
 import * as Api from './api';
 import { OPTION_NONE } from './config';
 import { getCityFromState } from './city';
+import { getPageCount } from './utils';
 
 export {
   Api,
   OPTION_NONE,
   getCityFromState,
+  getPageCount,
 }

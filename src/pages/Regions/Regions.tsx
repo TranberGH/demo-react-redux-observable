@@ -28,7 +28,7 @@ function Regions(props: RegionsProps) {
     const select = evt.target as HTMLSelectElement;
     props.fetchCities(select.options[select.selectedIndex].value)
   }
-
+//
   return (
     <>
     <p className="top-block"><Link to="/">Accueil</Link></p>
@@ -44,7 +44,7 @@ function Regions(props: RegionsProps) {
     <option key={`departement-${OPTION_NONE}`} value={OPTION_NONE}>Choisissez un département</option>
       { props.departements.map(departement => <option key={`departement-${departement.code}`} value={departement.code}>{departement.nom}</option>)}
     </select></p> }
-
+{/* Utiliser composant CitiesList */}
     { props.cities.length > 0 && <ul className="cities-list">
       { props.cities.map( city => (
         <li key={`city-${city.code}`} className="city-item">
