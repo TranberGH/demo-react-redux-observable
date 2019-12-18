@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 
 import {
   Search,
-  CitiesList,
+  ResultList,
 } from '../../components';
-
 
 import './Home.scss';
 
@@ -24,7 +23,12 @@ function Home(props: HomeProps) {
     <p className="top-block"><Link to="/regions">Rechercher par région et département</Link></p>
     <div>
       <Search search={props.search}/>
-      <CitiesList cities={props.cities}/>
+      <ResultList
+        items={props.cities}
+        classes={{
+          list: ['cities-list'],
+          item: ['city-item']
+        }}/>
     </div>
     </>
   )

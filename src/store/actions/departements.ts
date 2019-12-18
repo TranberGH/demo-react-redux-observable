@@ -4,6 +4,10 @@ import {
   FETCH_DEPARTEMENTS_ERROR,
 } from './constants';
 
+import {
+  createError,
+} from '../../core';
+
 import { Departement } from '../../types';
 
 function fetchDepartements(payload: string) {
@@ -21,15 +25,9 @@ function fetchDepartementsSuccess(payload: { region: string, departements: Depar
 }
 
 function fetchDepartementsError(error: Error | string) {
-  let regionsError: Error;
-  if (typeof error === 'string') {
-    regionsError = new Error(error)
-  } else {
-    regionsError = error;
-  }
   return {
     type: FETCH_DEPARTEMENTS_ERROR,
-    payload: regionsError,
+    payload: createError(error),
     error: true,
   }
 }

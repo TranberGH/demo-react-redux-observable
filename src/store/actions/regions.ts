@@ -4,6 +4,10 @@ import {
   FETCH_REGIONS_ERROR,
 } from './constants';
 
+import {
+  createError,
+} from '../../core';
+
 import { Region } from '../../types';
 
 function fetchRegions() {
@@ -20,15 +24,9 @@ function fetchRegionsSuccess(payload: Region[]) {
 }
 
 function fetchRegionsError(error: Error | string) {
-  let regionsError: Error;
-  if (typeof error === 'string') {
-    regionsError = new Error(error)
-  } else {
-    regionsError = error;
-  }
   return {
     type: FETCH_REGIONS_ERROR,
-    payload: regionsError,
+    payload: createError(error),
     error: true,
   }
 }

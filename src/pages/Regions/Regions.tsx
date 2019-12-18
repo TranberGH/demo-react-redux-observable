@@ -44,7 +44,7 @@ function Regions(props: RegionsProps) {
     <option key={`departement-${OPTION_NONE}`} value={OPTION_NONE}>Choisissez un département</option>
       { props.departements.map(departement => <option key={`departement-${departement.code}`} value={departement.code}>{departement.nom}</option>)}
     </select></p> }
-{/* Utiliser composant CitiesList */}
+{/* Utiliser composant ResultList */}
     { props.cities.length > 0 && <ul className="cities-list">
       { props.cities.map( city => (
         <li key={`city-${city.code}`} className="city-item">

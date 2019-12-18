@@ -1,9 +1,9 @@
-import CitiesList from './CitiesList/CitiesList';
+import ResultList from './ResultList/ResultList';
 import Search from './Search/Search';
 import SearchPagination from './SearchPagination/SearchPagination';
 
 export {
-  CitiesList,
+  ResultList,
   Search,
   SearchPagination,
 }
