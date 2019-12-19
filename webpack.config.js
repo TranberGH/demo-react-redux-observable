@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const sassRootDir = 'src/assets/scss/';
 
@@ -90,21 +91,22 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-        template: require('html-webpack-template'),
-        inject: false,
-        appMountId: 'app',
-        title: 'Recherche des communes',
-        lang: 'fr-FR',
-        mobile: true,
-        baseHref: '/',
-      }),
-      new MiniCssExtractPlugin({
-        // Options similar to the same options in webpackOptions.output
-        // all options are optional
-        filename: '[name].css',
-        chunkFilename: '[id].css',
-        ignoreOrder: false, // Enable to remove warnings about conflicting order
-      }),
+      template: require('html-webpack-template'),
+      inject: false,
+      appMountId: 'app',
+      title: 'Recherche des communes',
+      lang: 'fr-FR',
+      mobile: true,
+      baseHref: '/',
+    }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // all options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+      ignoreOrder: false, // Enable to remove warnings about conflicting order
+    }),
+    new Dotenv(),
   ],
   optimization: {
     runtimeChunk: 'single',
@@ -121,10 +123,13 @@ const config = {
 };
 
 module.exports = (env, argv) => {
+  console.log('conf : ', env, argv)
   if (argv.hot) {
     // Cannot use 'contenthash' when hot reloading is enabled.
     config.output.filename = '[name].[hash].js';
   }
+
+  // test argv.mode : development ou production
 
   return config;
 };

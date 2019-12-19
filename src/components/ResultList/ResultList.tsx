@@ -3,11 +3,20 @@ import { Link } from 'react-router-dom';
 
 interface ResultListProps {
   items: any[];
-  classes: {
-    list: string[];
-    item: string[];
-  };
+  listClasses: string[];
+  itemClasses: string[];
+  link: boolean;
 }
+
+// search
+
+// id
+// name: city
+
+// regions
+
+// id: codeRegion
+// name: nom
 
 /**
  * Display list of items
@@ -16,14 +25,19 @@ interface ResultListProps {
 function ResultList(props: ResultListProps) {
   return (
     <>
-    { props.items && <ul className={props.classes.list.join(' ') || 'result-list'}>
+    { props.items && <ul className={props.listClasses.join(' ') || 'result-list'}>
       { props.items.map(item => {
         return (
-          <li key={`city-${item.id}`} className={props.classes.item.join(' ') || 'result-item'}>
-            <Link to={{
-              pathname: `/city/${item.id}`,
-              state: { item }
-            }}>{ item['city'] }</Link>
+          <li key={`city-${item.id}`} className={props.itemClasses.join(' ') || 'result-item'}>
+            { props.link && (
+              <Link to={{
+                pathname: `/city/${item.id}`,
+                state: { item }
+              }}>{ item.name }</Link>
+            )}
+            { !props.link && (
+              item.name
+            )}
           </li>
         )
       }) }

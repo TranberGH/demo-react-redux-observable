@@ -1,7 +1,7 @@
 import { createRequestParameters, createPath } from './query';
 
-const searchApiUrl = 'https://api-adresse.data.gouv.fr/search/';
-const zonesApi = 'https://geo.api.gouv.fr/';
+const searchApiUrl = process.env.SEARCH_API_URL;
+const zonesApiUrl = process.env.ZONE_API_URL;
 
 async function search(q: string) {
   const searchParams = [
@@ -27,7 +27,7 @@ function searchUrl(q: string) {
  * Get all regions for France
  */
 function getAllRegionsUrl() {
-  return `${zonesApi}${createPath(['regions'])}`;
+  return `${zonesApiUrl}${createPath(['regions'])}`;
 }
 
 /**
@@ -35,7 +35,7 @@ function getAllRegionsUrl() {
  * @param regionCode {string} - Code of a region
  */
 function getDepartementsByRegionUrl(regionCode: string) {
-  return `${zonesApi}${createPath(['regions', regionCode, 'departements'])}`;
+  return `${zonesApiUrl}${createPath(['regions', regionCode, 'departements'])}`;
 }
 
 /**
@@ -43,7 +43,7 @@ function getDepartementsByRegionUrl(regionCode: string) {
  * @param departementCode {string} - Departement code
  */
 function getCitiesByDepartementUrl(departementCode: string) {
-  return `${zonesApi}${createPath(['departements', departementCode, 'communes'])}`;
+  return `${zonesApiUrl}${createPath(['departements', departementCode, 'communes'])}`;
 }
 
 export {

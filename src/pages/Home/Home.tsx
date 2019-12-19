@@ -25,10 +25,10 @@ function Home(props: HomeProps) {
       <Search search={props.search}/>
       <ResultList
         items={props.cities}
-        classes={{
-          list: ['cities-list'],
-          item: ['city-item']
-        }}/>
+        listClasses={['cities-list']}
+        itemClasses={['city-item']}
+        link={true}
+      />
     </div>
     </>
   )

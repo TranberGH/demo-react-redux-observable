@@ -8,13 +8,19 @@ import {
   fetchDepartements,
   fetchDepartementsSuccess,
   fetchDepartementsError,
-} from './departements'
+} from './departements';
 
 import {
   fetchCities,
   fetchCitiesSuccess,
   fetchCitiesError,
-} from './cities'
+} from './cities';
+
+import {
+  searchCities,
+  searchCitiesSuccess,
+  searchCitiesError,
+} from './search';
 
 export * from './constants';
 
@@ -33,4 +39,9 @@ export {
   fetchCities,
   fetchCitiesSuccess,
   fetchCitiesError,
+
+  // Search
+  searchCities,
+  searchCitiesSuccess,
+  searchCitiesError,
 }
