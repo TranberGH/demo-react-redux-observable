@@ -21,6 +21,7 @@ interface RegionsProps {
 
 function Regions(props: RegionsProps) {
   const [ init, setInit ] = useState(false);
+  const { regions, departements, cities } = props;
 
   function fetchDepartements(evt: React.SyntheticEvent) {
     const select = evt.target as HTMLSelectElement;
@@ -37,7 +38,7 @@ function Regions(props: RegionsProps) {
       props.fetchRegions();
       setInit(true);
     }
-  })
+  }, [regions])
 //
   return (
     <>
@@ -47,16 +48,16 @@ function Regions(props: RegionsProps) {
 
     <p className="choice-block"><select onChange={fetchDepartements}>
       <option key={`region-${OPTION_NONE}`} value={OPTION_NONE}>Choisissez une région</option>
-      { props.regions.map(region => <option key={`region-${region.code}`} value={region.code}>{region.nom}</option>)}
+      { regions.map(region => <option key={`region-${region.code}`} value={region.code}>{region.nom}</option>)}
     </select></p>
 
-    { props.departements.length > 0 && <p className="choice-block"><select onChange={fetchCities}>
+    { departements.length > 0 && <p className="choice-block"><select onChange={fetchCities}>
     <option key={`departement-${OPTION_NONE}`} value={OPTION_NONE}>Choisissez un département</option>
-      { props.departements.map(departement => <option key={`departement-${departement.code}`} value={departement.code}>{departement.nom}</option>)}
+      { departements.map(departement => <option key={`departement-${departement.code}`} value={departement.code}>{departement.nom}</option>)}
     </select></p> }
 {/* Utiliser composant ResultList */}
-    { props.cities.length > 0 && <ul className="cities-list">
-      { props.cities.map( city => (
+    { cities.length > 0 && <ul className="cities-list">
+      { cities.map( city => (
         <li key={`city-${city.code}`} className="city-item">
           { city.nom }
         </li>
