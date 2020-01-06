@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import {
@@ -14,11 +14,14 @@ interface RegionsProps {
   regions: Region[];
   departements: Departement[];
   cities: City[];
+  fetchRegions: () => void;
   fetchDepartements: (regionCode: string) => void;
   fetchCities: (departementCode: string) => void;
 }
 
 function Regions(props: RegionsProps) {
+  const [ init, setInit ] = useState(false);
+
   function fetchDepartements(evt: React.SyntheticEvent) {
     const select = evt.target as HTMLSelectElement;
     props.fetchDepartements(select.options[select.selectedIndex].value);
@@ -28,6 +31,13 @@ function Regions(props: RegionsProps) {
     const select = evt.target as HTMLSelectElement;
     props.fetchCities(select.options[select.selectedIndex].value)
   }
+
+  useEffect(() => {
+    if (!init) {
+      props.fetchRegions();
+      setInit(true);
+    }
+  })
 //
   return (
     <>
