@@ -14,17 +14,12 @@
     "target": "es5",
     "allowJs": true,
     "jsx": "react",
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "#/*": [
-        "src/*"
-      ]
+      "components/*": ["components/*"],
+      "core/*": ["core/*"]
     }
   },
-  "include": [
-    "./src/**/*"
-  ],
-  "exclude": [
-    "./node_modules"
-  ]
+  "include": ["./src/**/*"],
+  "exclude": ["./node_modules"]
 }
