@@ -6,7 +6,7 @@ const zonesApiUrl = process.env.ZONE_API_URL;
 async function search(q: string) {
   const searchParams = [
     ['q', encodeURIComponent(q)],
-    ['limit', '20'],
+    ['limit', '20']
   ];
   return fetch(`${searchApiUrl}${createRequestParameters(searchParams)}`);
 }
@@ -18,7 +18,7 @@ async function search(q: string) {
 function searchUrl(q: string) {
   const searchParams = [
     ['q', encodeURIComponent(q)],
-    ['limit', '20'],
+    ['limit', '20']
   ];
   return `${searchApiUrl}${createRequestParameters(searchParams)}`;
 }
@@ -43,15 +43,18 @@ function getDepartementsByRegionUrl(regionCode: string) {
  * @param departementCode {string} - Departement code
  */
 function getCitiesByDepartementUrl(departementCode: string) {
-  return `${zonesApiUrl}${createPath(['departements', departementCode, 'communes'])}`;
+  return `${zonesApiUrl}${createPath([
+    'departements',
+    departementCode,
+    'communes'
+  ])}`;
 }
 
 export {
   search,
-
-// Urls
+  // Urls
   getAllRegionsUrl,
   searchUrl,
   getDepartementsByRegionUrl,
-  getCitiesByDepartementUrl,
-}
+  getCitiesByDepartementUrl
+};

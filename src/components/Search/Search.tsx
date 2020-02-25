@@ -22,9 +22,16 @@ class Search extends React.Component<SearchProps, any> {
     return (
       <div className="search-block">
         <h2 className="search-title">Rechercher par adresse</h2>
-        <p><input className="search-field" type="text" placeholder="Veuillez saisir une adresse" onChange={this.search} /></p>
+        <p>
+          <input
+            className="search-field"
+            type="text"
+            placeholder="Veuillez saisir une adresse"
+            onChange={this.search}
+          />
+        </p>
       </div>
-    )
+    );
   }
 }
 

@@ -1,21 +1,23 @@
 import {
   FETCH_CITIES,
   FETCH_CITIES_SUCCESS,
-  FETCH_CITIES_ERROR,
+  FETCH_CITIES_ERROR
 } from '../actions';
 
 let citiesState = {
   departement: null,
   cities: {},
-  error: null,
-}
+  error: null
+};
 
 function cities(state = citiesState, action: any) {
-  switch(action.type) {
+  switch (action.type) {
     case FETCH_CITIES:
       return Object.assign({}, state, { departement: action.payload });
     case FETCH_CITIES_SUCCESS:
-      const cities = Object.assign({}, state.cities, { [action.payload.departement]: action.payload.cities })
+      const cities = Object.assign({}, state.cities, {
+        [action.payload.departement]: action.payload.cities
+      });
       return Object.assign({}, state, { cities });
     case FETCH_CITIES_ERROR:
       return Object.assign({}, state, { error: action.payload });
@@ -24,6 +26,4 @@ function cities(state = citiesState, action: any) {
   }
 }
 
-export {
-  cities,
-}
+export { cities };

@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { Search, ResultList } from "components";
+import { Search, ResultList } from 'components';
 
-import "./Home.scss";
+import './Home.scss';
 
 interface HomeProps {
   search: Function;
@@ -24,8 +24,8 @@ function Home(props: HomeProps) {
         <Search search={props.search} />
         <ResultList
           items={props.cities}
-          listClasses={["cities-list"]}
-          itemClasses={["city-item"]}
+          listClasses={['cities-list']}
+          itemClasses={['city-item']}
           link={true}
         />
       </div>

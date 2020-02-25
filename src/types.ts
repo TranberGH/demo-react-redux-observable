@@ -26,7 +26,6 @@ export {
   Region,
   Departement,
   City,
-
   // Actions
-  FSAction,
-}
+  FSAction
+};

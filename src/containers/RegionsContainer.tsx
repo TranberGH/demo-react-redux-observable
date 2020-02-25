@@ -1,14 +1,10 @@
 import { connect } from 'react-redux';
 
-import { Regions } from '../pages';
-import {
-  fetchRegions,
-  fetchDepartements,
-  fetchCities,
-} from '../store/actions';
+import { Regions } from 'pages';
+import { fetchRegions, fetchDepartements, fetchCities } from '../store/actions';
 import {
   getDepartementsByRegion,
-  getCitiesByDepartement,
+  getCitiesByDepartement
 } from '../store/selectors';
 
 /**
@@ -18,13 +14,15 @@ import {
 const mapStateToProps = (state: any) => ({
   regions: state.regions.regions,
   departements: getDepartementsByRegion(state),
-  cities: getCitiesByDepartement(state),
-})
+  cities: getCitiesByDepartement(state)
+});
 
 const mapDispatchToProps = (dispatch: any) => ({
   fetchRegions: () => dispatch(fetchRegions()),
-  fetchDepartements: (regionCode: string) => dispatch(fetchDepartements(regionCode)),
-  fetchCities: (departementCode: string) => dispatch(fetchCities(departementCode)),
-})
+  fetchDepartements: (regionCode: string) =>
+    dispatch(fetchDepartements(regionCode)),
+  fetchCities: (departementCode: string) =>
+    dispatch(fetchCities(departementCode))
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Regions)
+export default connect(mapStateToProps, mapDispatchToProps)(Regions);

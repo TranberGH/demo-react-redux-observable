@@ -7,10 +7,7 @@ const Dotenv = require('dotenv-webpack');
 const sassRootDir = 'src/assets/scss/';
 
 const config = {
-  entry: [
-    'react-hot-loader/patch',
-    './src/index.tsx'
-  ],
+  entry: ['react-hot-loader/patch', './src/index.tsx'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js'
@@ -19,9 +16,7 @@ const config = {
     rules: [
       {
         test: /\.ts(x)?$/,
-        use: [
-          'awesome-typescript-loader'
-        ],
+        use: ['awesome-typescript-loader'],
         exclude: /node_modules/
       },
       {
@@ -34,16 +29,16 @@ const config = {
               // you can specify a publicPath here
               // by default it uses publicPath in webpackOptions.output
               publicPath: '../',
-              hmr: process.env.NODE_ENV === 'development',
-            },
+              hmr: process.env.NODE_ENV === 'development'
+            }
           },
           'css-loader',
           {
             loader: 'sass-loader',
             options: {
               // Prefer `dart-sass`
-              implementation: require('sass'),
-            },
+              implementation: require('sass')
+            }
           },
           {
             loader: 'sass-resources-loader',
@@ -51,11 +46,11 @@ const config = {
               // Or array of paths
               resources: [
                 path.resolve(__dirname, sassRootDir, 'variables.scss'),
-                path.resolve(__dirname, sassRootDir, 'reset.scss'),
+                path.resolve(__dirname, sassRootDir, 'reset.scss')
                 // path.resolve(__dirname, sassRootDir, 'styles.scss'),
               ]
-            },
-          },
+            }
+          }
         ]
       },
       {
@@ -76,18 +71,14 @@ const config = {
     ]
   },
   resolve: {
-    extensions: [
-      '.tsx',
-      '.ts',
-      '.js'
-    ],
+    extensions: ['.tsx', '.ts', '.js'],
     alias: {
       'react-dom': '@hot-loader/react-dom'
     }
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
-    historyApiFallback: true,
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -97,16 +88,16 @@ const config = {
       title: 'Recherche des communes',
       lang: 'fr-FR',
       mobile: true,
-      baseHref: '/',
+      baseHref: '/'
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // all options are optional
       filename: '[name].css',
       chunkFilename: '[id].css',
-      ignoreOrder: false, // Enable to remove warnings about conflicting order
+      ignoreOrder: false // Enable to remove warnings about conflicting order
     }),
-    new Dotenv(),
+    new Dotenv()
   ],
   optimization: {
     runtimeChunk: 'single',

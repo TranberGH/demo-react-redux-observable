@@ -1,26 +1,18 @@
 import {
   fetchRegions,
   fetchRegionsSuccess,
-  fetchRegionsError,
+  fetchRegionsError
 } from './regions';
 
 import {
   fetchDepartements,
   fetchDepartementsSuccess,
-  fetchDepartementsError,
+  fetchDepartementsError
 } from './departements';
 
-import {
-  fetchCities,
-  fetchCitiesSuccess,
-  fetchCitiesError,
-} from './cities';
+import { fetchCities, fetchCitiesSuccess, fetchCitiesError } from './cities';
 
-import {
-  searchCities,
-  searchCitiesSuccess,
-  searchCitiesError,
-} from './search';
+import { searchCities, searchCitiesSuccess, searchCitiesError } from './search';
 
 export * from './constants';
 
@@ -29,19 +21,16 @@ export {
   fetchRegions,
   fetchRegionsSuccess,
   fetchRegionsError,
-
   // Departements
   fetchDepartements,
   fetchDepartementsSuccess,
   fetchDepartementsError,
-
   // Cités
   fetchCities,
   fetchCitiesSuccess,
   fetchCitiesError,
-
   // Search
   searchCities,
   searchCitiesSuccess,
-  searchCitiesError,
-}
+  searchCitiesError
+};

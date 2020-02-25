@@ -13,15 +13,15 @@ function getCityFromState(state: any) {
       city,
       postcode,
       departement,
-      region,
-    }
+      region
+    };
   }
 
   return {
     city: '',
     postcode: '',
     departement: '',
-    region: '',
+    region: ''
   };
 }
 
@@ -34,7 +34,7 @@ function parseCityContext(context: string) {
 
   const parts = {
     departement: '',
-    region: '',
+    region: ''
   };
 
   if (contextParts.length >= 2) {
@@ -47,6 +47,4 @@ function parseCityContext(context: string) {
   return parts;
 }
 
-export {
-  getCityFromState,
-}
+export { getCityFromState };

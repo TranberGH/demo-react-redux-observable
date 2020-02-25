@@ -12,12 +12,10 @@ function HomeContainer(props: any) {
   const cities = useSelector((state: any) => state.search.result);
 
   function search(q: string) {
-    dispatch(searchCities(q))
+    dispatch(searchCities(q));
   }
 
-  return (
-    <Home search={search} cities={cities}/>
-  )
+  return <Home search={search} cities={cities} />;
 }
 
 export default HomeContainer;
