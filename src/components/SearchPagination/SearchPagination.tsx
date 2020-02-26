@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { getPageCount } from 'core';
+import { getPageCount } from '../../core';
 
 interface SearchPaginationProps {
   currentPage: number;

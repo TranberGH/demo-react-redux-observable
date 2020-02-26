@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Search, ResultList } from 'components';
+import { Search, ResultList } from '../../components';
 
 import './Home.scss';
 

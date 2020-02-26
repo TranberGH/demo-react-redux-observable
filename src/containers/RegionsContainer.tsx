@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { Regions } from 'pages';
+import { Regions } from '../pages';
 import { fetchRegions, fetchDepartements, fetchCities } from '../store/actions';
 import {
   getDepartementsByRegion,

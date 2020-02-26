@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Dotenv = require('dotenv-webpack');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 const sassRootDir = 'src/assets/scss/';
 
@@ -113,11 +114,34 @@ const config = {
   }
 };
 
+let numCyclesDetected = 0;
+
 module.exports = (env, argv) => {
   // console.log('conf : ', env, argv)
   if (argv.hot) {
     // Cannot use 'contenthash' when hot reloading is enabled.
     config.output.filename = '[name].[hash].js';
+  }
+
+  if (argv.mode === 'development') {
+    config.plugins.push(
+      new CircularDependencyPlugin({
+        exclude: /node_modules/,
+        cwd: process.cwd(),
+        onStart({ compilation }) {
+          numCyclesDetected = 0;
+        },
+        onDetected({ module: webpackModuleRecord, paths, compilation }) {
+          numCyclesDetected++;
+          compilation.warnings.push(new Error(paths.join(' -> ')));
+        },
+        onEnd({ compilation }) {
+          compilation.warnings.push(
+            new Error(`Detected ${numCyclesDetected} circular dependencies`)
+          );
+        }
+      })
+    );
   }
 
   // test argv.mode : development ou production

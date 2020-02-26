@@ -7,18 +7,19 @@ interface SearchProps {
 }
 
 function useSearch(searchFn: Function) {
-  const search = useCallback((evt: React.SyntheticEvent) => {
+  const searchAddress = useCallback((evt: React.SyntheticEvent) => {
     const searchValue = encodeURIComponent(
       (evt.target as HTMLInputElement).value
     );
     searchFn(searchValue);
   }, []);
 
-  return { search };
+  return { searchAddress };
 }
 
 function Search(props: SearchProps) {
-  const { search } = useSearch(props.search);
+  const { search } = props;
+  const { searchAddress } = useSearch(search);
 
   return (
     <div className="search-block">
@@ -28,7 +29,7 @@ function Search(props: SearchProps) {
           className="search-field"
           type="text"
           placeholder="Veuillez saisir une adresse"
-          onChange={search}
+          onChange={searchAddress}
         />
       </p>
     </div>

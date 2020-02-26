@@ -1,41 +1,63 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { Region, Departement, City } from '../../types';
-import { OPTION_NONE } from 'core';
+import { OPTION_NONE } from '../../core';
+import {
+  fetchDepartements,
+  fetchRegions,
+  fetchCities
+} from '../../store/actions';
+import {
+  getDepartementsByRegion,
+  getCitiesByDepartement
+} from '../../store/selectors';
 
 import './Regions.scss';
 
-interface RegionsProps {
-  regions: Region[];
-  departements: Departement[];
-  cities: City[];
-  fetchRegions: () => void;
-  fetchDepartements: (regionCode: string) => void;
-  fetchCities: (departementCode: string) => void;
-}
+function usePlaces() {
+  const regions: Region[] = useSelector((state: any) => state.regions.regions);
+  const departements: Departement[] = useSelector(getDepartementsByRegion);
+  const cities: City[] = useSelector(getCitiesByDepartement);
 
-function Regions(props: RegionsProps) {
-  const [init, setInit] = useState(false);
-  const { regions, departements, cities } = props;
-
-  function fetchDepartements(evt: React.SyntheticEvent) {
+  const dispatch = useDispatch();
+  const fetchDepartementsHandler = useCallback((evt: React.SyntheticEvent) => {
     const select = evt.target as HTMLSelectElement;
-    props.fetchDepartements(select.options[select.selectedIndex].value);
-  }
+    dispatch(fetchDepartements(select.options[select.selectedIndex].value));
+  }, []);
 
-  function fetchCities(evt: React.SyntheticEvent) {
+  const fetchCitiesHandler = useCallback((evt: React.SyntheticEvent) => {
     const select = evt.target as HTMLSelectElement;
-    props.fetchCities(select.options[select.selectedIndex].value);
-  }
+    dispatch(fetchCities(select.options[select.selectedIndex].value));
+  }, []);
 
   useEffect(() => {
-    if (!init) {
-      props.fetchRegions();
-      setInit(true);
+    if (regions.length === 0) {
+      dispatch(fetchRegions());
     }
   }, [regions]);
-  //
+
+  return {
+    fetchDepartementsHandler,
+    fetchCitiesHandler,
+    regions,
+    departements,
+    cities
+  };
+}
+
+interface RegionsProps {}
+
+function Regions(props: RegionsProps) {
+  const {
+    fetchDepartementsHandler,
+    fetchCitiesHandler,
+    regions,
+    departements,
+    cities
+  } = usePlaces();
+
   return (
     <>
       <p className="top-block">
@@ -45,7 +67,7 @@ function Regions(props: RegionsProps) {
       <h2 className="search-title">Rechercher par régions et départements</h2>
 
       <p className="choice-block">
-        <select onChange={fetchDepartements}>
+        <select onChange={fetchDepartementsHandler}>
           <option key={`region-${OPTION_NONE}`} value={OPTION_NONE}>
             Choisissez une région
           </option>
@@ -59,7 +81,7 @@ function Regions(props: RegionsProps) {
 
       {departements.length > 0 && (
         <p className="choice-block">
-          <select onChange={fetchCities}>
+          <select onChange={fetchCitiesHandler}>
             <option key={`departement-${OPTION_NONE}`} value={OPTION_NONE}>
               Choisissez un département
             </option>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Home } from 'pages';
+import { Home } from '../pages';
 import { searchCities } from '../store/actions';
 
 /**

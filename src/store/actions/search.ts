@@ -4,7 +4,7 @@ import {
   SEARCH_CITIES_ERROR
 } from './constants';
 
-import { createError } from 'core';
+import { createError } from '../../core';
 
 function searchCities(payload: string) {
   return {

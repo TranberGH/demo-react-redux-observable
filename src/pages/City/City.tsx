@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import { getCityFromState } from 'core';
+import { getCityFromState } from '../../core';
 
 import './City.scss';
 

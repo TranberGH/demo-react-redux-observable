@@ -4,7 +4,7 @@ import { map, mergeMap } from 'rxjs/operators';
 import { ofType } from 'redux-observable';
 
 import { FETCH_REGIONS, fetchRegionsSuccess } from '../actions';
-import { Api } from 'core';
+import { Api } from '../../core';
 import { Region } from '../../types';
 
 const getAllRegionsEpic = (action$: any) =>
