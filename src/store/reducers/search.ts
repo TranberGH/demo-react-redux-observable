@@ -4,13 +4,15 @@ import {
   SEARCH_CITIES_ERROR
 } from '../actions';
 
-let searchState = {
-  result: [],
-  search: '',
-  error: null
-};
+function getDefaultState() {
+  return {
+    result: [],
+    search: '',
+    error: null
+  };
+}
 
-function search(state = searchState, action: any) {
+function search(state = getDefaultState(), action: any) {
   switch (action.type) {
     case SEARCH_CITIES:
       return Object.assign({}, state, { search: action.payload });

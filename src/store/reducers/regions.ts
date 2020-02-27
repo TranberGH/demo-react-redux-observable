@@ -1,11 +1,13 @@
 import { FETCH_REGIONS_SUCCESS, FETCH_REGIONS_ERROR } from '../actions';
 
-let regionsState = {
-  regions: [],
-  error: null
-};
+function getDefaultState() {
+  return {
+    regions: [],
+    error: null
+  };
+}
 
-function regions(state = regionsState, action: any) {
+function regions(state = getDefaultState(), action: any) {
   switch (action.type) {
     case FETCH_REGIONS_SUCCESS:
       return Object.assign({}, state, { regions: action.payload });

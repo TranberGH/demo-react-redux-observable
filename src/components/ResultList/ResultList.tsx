@@ -23,27 +23,29 @@ interface ResultListProps {
  * @param props {Object}
  */
 function ResultList(props: ResultListProps) {
+  const { items, listClasses, itemClasses, link } = props;
   return (
     <>
-      {props.items && (
-        <ul className={props.listClasses.join(' ') || 'result-list'}>
-          {props.items.map(item => {
+      {items && (
+        <ul className={listClasses.join(' ') || 'result-list'}>
+          {items.map(item => {
+            const { id: itemId, name: itemName } = item.properties;
             return (
               <li
-                key={`city-${item.id}`}
-                className={props.itemClasses.join(' ') || 'result-item'}
+                key={`city-${itemId}`}
+                className={itemClasses.join(' ') || 'result-item'}
               >
-                {props.link && (
+                {link && (
                   <Link
                     to={{
-                      pathname: `/city/${item.id}`,
-                      state: { item }
+                      pathname: `/city/${itemId}`,
+                      state: item.properties
                     }}
                   >
-                    {item.name}
+                    {itemName}
                   </Link>
                 )}
-                {!props.link && item.name}
+                {!link && itemName}
               </li>
             );
           })}

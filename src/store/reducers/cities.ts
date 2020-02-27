@@ -4,13 +4,15 @@ import {
   FETCH_CITIES_ERROR
 } from '../actions';
 
-let citiesState = {
-  departement: null,
-  cities: {},
-  error: null
-};
+function getDefaultState() {
+  return {
+    departement: null,
+    cities: {},
+    error: null
+  };
+}
 
-function cities(state = citiesState, action: any) {
+function cities(state = getDefaultState(), action: any) {
   switch (action.type) {
     case FETCH_CITIES:
       return Object.assign({}, state, { departement: action.payload });
