@@ -6,22 +6,22 @@ const CITY_CONTEXT_SEPARATOR = /\s*,\s*/;
  */
 function getCityFromState(state: any) {
   if (state) {
-    const { city, postcode, context } = state.city;
+    const { city, postcode, context } = state;
     const { departement, region } = parseCityContext(context);
 
     return {
       city,
       postcode,
       departement,
-      region,
-    }
+      region
+    };
   }
 
   return {
     city: '',
     postcode: '',
     departement: '',
-    region: '',
+    region: ''
   };
 }
 
@@ -34,7 +34,7 @@ function parseCityContext(context: string) {
 
   const parts = {
     departement: '',
-    region: '',
+    region: ''
   };
 
   if (contextParts.length >= 2) {
@@ -47,6 +47,4 @@ function parseCityContext(context: string) {
   return parts;
 }
 
-export {
-  getCityFromState,
-}
+export { getCityFromState };

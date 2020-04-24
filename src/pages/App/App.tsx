@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { Home, Regions } from '../../containers';
+import { Home } from '../../containers';
+import { Regions } from '../../pages';
 import City from '../City/City';
 
 import './App.scss';
@@ -14,9 +15,9 @@ export default function Page(props: any) {
       </header>
       <main className="page-content">
         <Router>
-        <Route path="/" exact component={Home}/>
-        <Route path="/city/:cityId" component={City}/>
-        <Route path="/regions" component={Regions}/>
+          <Route path="/" exact={true} component={Home} />
+          <Route path="/city/:cityId" component={City} />
+          <Route path="/regions" component={Regions} />
         </Router>
       </main>
       <footer className="app-footer">

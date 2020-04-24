@@ -7,5 +7,5 @@ export {
   getAllRegionsEpic,
   getDepartementsByRegionEpic,
   getCitiesByDepartementEpic,
-  getCitiesEpic,
-}
+  getCitiesEpic
+};

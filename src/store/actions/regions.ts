@@ -1,38 +1,32 @@
 import {
   FETCH_REGIONS,
   FETCH_REGIONS_SUCCESS,
-  FETCH_REGIONS_ERROR,
+  FETCH_REGIONS_ERROR
 } from './constants';
 
-import {
-  createError,
-} from '../../core';
+import { createError } from '../../core';
 
 import { Region } from '../../types';
 
 function fetchRegions() {
   return {
-    type: FETCH_REGIONS,
-  }
+    type: FETCH_REGIONS
+  };
 }
 
 function fetchRegionsSuccess(payload: Region[]) {
   return {
     type: FETCH_REGIONS_SUCCESS,
-    payload,
-  }
+    payload
+  };
 }
 
 function fetchRegionsError(error: Error | string) {
   return {
     type: FETCH_REGIONS_ERROR,
     payload: createError(error),
-    error: true,
-  }
+    error: true
+  };
 }
 
-export {
-  fetchRegions,
-  fetchRegionsSuccess,
-  fetchRegionsError,
-}
+export { fetchRegions, fetchRegionsSuccess, fetchRegionsError };

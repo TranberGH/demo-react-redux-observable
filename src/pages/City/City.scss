@@ -7,8 +7,8 @@
 }
 
 .city-props {
-  box-shadow: 0 0 .2em .2em rgba(0, 0, 0, .2);
-  border-radius: .5em;
+  box-shadow: 0 0 0.2em 0.2em rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
   padding: 2em;
 
   dt {
@@ -18,7 +18,7 @@
   }
 
   dd {
-    margin: 0 0 .5em;
+    margin: 0 0 0.5em;
     font-weight: bold;
   }
 }

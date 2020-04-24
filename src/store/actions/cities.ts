@@ -1,7 +1,7 @@
 import {
   FETCH_CITIES,
   FETCH_CITIES_SUCCESS,
-  FETCH_CITIES_ERROR,
+  FETCH_CITIES_ERROR
 } from './constants';
 
 import { City } from '../../types';
@@ -9,33 +9,29 @@ import { City } from '../../types';
 function fetchCities(payload: string) {
   return {
     type: FETCH_CITIES,
-    payload,
-  }
+    payload
+  };
 }
 
-function fetchCitiesSuccess(payload: { departement: string, cities: City[] }) {
+function fetchCitiesSuccess(payload: { departement: string; cities: City[] }) {
   return {
     type: FETCH_CITIES_SUCCESS,
-    payload,
-  }
+    payload
+  };
 }
 
 function fetchCitiesError(error: Error | string) {
   let citiesError: Error;
   if (typeof error === 'string') {
-    citiesError = new Error(error)
+    citiesError = new Error(error);
   } else {
     citiesError = error;
   }
   return {
     type: FETCH_CITIES_ERROR,
     payload: citiesError,
-    error: true,
-  }
+    error: true
+  };
 }
 
-export {
-  fetchCities,
-  fetchCitiesSuccess,
-  fetchCitiesError,
-}
+export { fetchCities, fetchCitiesSuccess, fetchCitiesError };

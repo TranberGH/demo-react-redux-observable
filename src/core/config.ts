@@ -1,5 +1,3 @@
 const OPTION_NONE = 'none';
 
-export {
-  OPTION_NONE,
-}
+export { OPTION_NONE };

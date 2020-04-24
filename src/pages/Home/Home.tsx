@@ -1,9 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useCallback } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { Search, ResultList } from "components";
+import { Search, ResultList } from '../../components';
+import { searchCities } from '../../store/actions';
 
-import "./Home.scss";
+import './Home.scss';
+
+function useCities() {
+  const dispatch = useDispatch();
+  const cities = useSelector((state: any) => state.search.result);
+
+  const search = useCallback((q: string) => {
+    dispatch(searchCities(q));
+  }, []);
+}
 
 interface HomeProps {
   search: Function;
@@ -24,8 +35,8 @@ function Home(props: HomeProps) {
         <Search search={props.search} />
         <ResultList
           items={props.cities}
-          listClasses={["cities-list"]}
-          itemClasses={["city-item"]}
+          listClasses={['cities-list']}
+          itemClasses={['city-item']}
           link={true}
         />
       </div>

@@ -1,34 +1,26 @@
 import { combineEpics } from 'redux-observable';
 import { combineReducers } from 'redux';
 
-import {
-  regions,
-  departements,
-  cities,
-  search,
-} from './reducers';
+import { regions, departements, cities, search } from './reducers';
 import {
   getAllRegionsEpic,
   getDepartementsByRegionEpic,
   getCitiesByDepartementEpic,
-  getCitiesEpic,
+  getCitiesEpic
 } from './epics';
 
 const rootEpic = combineEpics(
   getAllRegionsEpic,
   getDepartementsByRegionEpic,
   getCitiesByDepartementEpic,
-  getCitiesEpic,
+  getCitiesEpic
 );
 
 const rootReducer = combineReducers({
   regions,
   departements,
   cities,
-  search,
+  search
 });
 
-export {
-  rootEpic,
-  rootReducer,
-}
+export { rootEpic, rootReducer };

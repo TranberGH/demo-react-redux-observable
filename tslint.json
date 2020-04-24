@@ -1,4 +1,5 @@
 {
+  "extends": ["tslint-react"],
   "rules": {
     "prettier": true,
     "class-name": true,
@@ -32,6 +33,7 @@
       "check-operator",
       "check-separator",
       "check-type"
-    ]
+    ],
+    "jsx-no-multiline-js": false
   }
 }

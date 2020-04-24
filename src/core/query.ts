@@ -29,7 +29,4 @@ function createPath(pathSteps: string[], start = false): string {
   return `${startPath}${pathSteps.join(PATH_SEPARATOR)}`;
 }
 
-export {
-  createRequestParameters,
-  createPath,
-}
+export { createRequestParameters, createPath };
