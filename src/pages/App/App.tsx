@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { Home } from '../../containers';
-import { Regions } from '../../pages';
+import { Home, Regions } from '../../pages';
 import City from '../City/City';
 
 import './App.scss';
