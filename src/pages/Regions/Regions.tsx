@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { OPTION_NONE } from '../../core';
 import { usePlaces } from './hooks';
+import { ResultList } from '../../components';
 
 import './Regions.scss';
 
@@ -55,7 +56,7 @@ function Regions(props: RegionsProps) {
           </select>
         </p>
       )}
-      {/* Utiliser composant ResultList */}
+      {/* Utiliser composant ResultList ??? */}
       {cities.length > 0 && (
         <ul className="cities-list">
           {cities.map(city => (

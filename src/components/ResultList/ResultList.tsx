@@ -24,6 +24,7 @@ interface ResultListProps {
  */
 function ResultList(props: ResultListProps) {
   const { items, listClasses, itemClasses, link } = props;
+
   return (
     <>
       {items && (
