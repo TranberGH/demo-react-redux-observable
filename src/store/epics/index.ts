@@ -1,11 +1,12 @@
 import { getAllRegionsEpic } from './regions';
 import { getDepartementsByRegionEpic } from './departements';
-import { getCitiesByDepartementEpic } from './cities';
+import { getCitiesByDepartementEpic, resetDepartementEpic } from './cities';
 import { getCitiesEpic } from './search';
 
 export {
   getAllRegionsEpic,
   getDepartementsByRegionEpic,
   getCitiesByDepartementEpic,
+  resetDepartementEpic,
   getCitiesEpic
 };

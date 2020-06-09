@@ -1,7 +1,8 @@
 import {
   FETCH_CITIES,
   FETCH_CITIES_SUCCESS,
-  FETCH_CITIES_ERROR
+  FETCH_CITIES_ERROR,
+  RESET_DEPARTEMENT
 } from './constants';
 
 import { City } from '../../types';
@@ -34,4 +35,10 @@ function fetchCitiesError(error: Error | string) {
   };
 }
 
-export { fetchCities, fetchCitiesSuccess, fetchCitiesError };
+function resetDepartement() {
+  return {
+    type: RESET_DEPARTEMENT
+  };
+}
+
+export { fetchCities, fetchCitiesSuccess, fetchCitiesError, resetDepartement };

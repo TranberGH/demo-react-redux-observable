@@ -6,6 +6,7 @@ import {
   getAllRegionsEpic,
   getDepartementsByRegionEpic,
   getCitiesByDepartementEpic,
+  resetDepartementEpic,
   getCitiesEpic
 } from './epics';
 
@@ -13,6 +14,7 @@ const rootEpic = combineEpics(
   getAllRegionsEpic,
   getDepartementsByRegionEpic,
   getCitiesByDepartementEpic,
+  resetDepartementEpic,
   getCitiesEpic
 );
 

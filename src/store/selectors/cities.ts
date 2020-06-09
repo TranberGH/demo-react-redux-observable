@@ -8,4 +8,8 @@ function hasCitiesForDepartement(departement: string, state: any): boolean {
   return Reflect.has(state.cities.cities, departement);
 }
 
-export { getCitiesByDepartement, hasCitiesForDepartement };
+function getCityDepartement(state: any): any {
+  return state.cities.departement || null;
+}
+
+export { getCitiesByDepartement, hasCitiesForDepartement, getCityDepartement };

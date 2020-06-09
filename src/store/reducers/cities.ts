@@ -1,7 +1,8 @@
 import {
   FETCH_CITIES,
   FETCH_CITIES_SUCCESS,
-  FETCH_CITIES_ERROR
+  FETCH_CITIES_ERROR,
+  RESET_DEPARTEMENT
 } from '../actions';
 
 function getDefaultState() {
@@ -23,6 +24,8 @@ function cities(state = getDefaultState(), action: any) {
       return Object.assign({}, state, { cities });
     case FETCH_CITIES_ERROR:
       return Object.assign({}, state, { error: action.payload });
+    case RESET_DEPARTEMENT:
+      return Object.assign({}, state, { departement: null });
     default:
       return state;
   }

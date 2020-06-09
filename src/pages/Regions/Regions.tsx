@@ -15,7 +15,9 @@ function Regions(props: RegionsProps) {
     fetchCitiesHandler,
     regions,
     departements,
-    cities
+    cities,
+    region: currentRegion,
+    departement: currentDepartement
   } = usePlaces();
 
   return (
@@ -32,7 +34,11 @@ function Regions(props: RegionsProps) {
             Choisissez une région
           </option>
           {regions.map(region => (
-            <option key={`region-${region.code}`} value={region.code}>
+            <option
+              key={`region-${region.code}`}
+              value={region.code}
+              selected={currentRegion === region.code}
+            >
               {region.nom}
             </option>
           ))}
@@ -49,6 +55,7 @@ function Regions(props: RegionsProps) {
               <option
                 key={`departement-${departement.code}`}
                 value={departement.code}
+                selected={currentDepartement === departement.code}
               >
                 {departement.nom}
               </option>
@@ -57,7 +64,7 @@ function Regions(props: RegionsProps) {
         </p>
       )}
       {/* Utiliser composant ResultList ??? */}
-      {cities.length > 0 && (
+      {currentDepartement !== null && cities.length > 0 && (
         <ul className="cities-list">
           {cities.map(city => (
             <li key={`city-${city.code}`} className="city-item">

@@ -10,7 +10,12 @@ import {
   fetchDepartementsError
 } from './departements';
 
-import { fetchCities, fetchCitiesSuccess, fetchCitiesError } from './cities';
+import {
+  fetchCities,
+  fetchCitiesSuccess,
+  fetchCitiesError,
+  resetDepartement
+} from './cities';
 
 import { searchCities, searchCitiesSuccess, searchCitiesError } from './search';
 
@@ -29,6 +34,7 @@ export {
   fetchCities,
   fetchCitiesSuccess,
   fetchCitiesError,
+  resetDepartement,
   // Search
   searchCities,
   searchCitiesSuccess,

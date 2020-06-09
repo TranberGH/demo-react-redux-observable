@@ -1,9 +1,14 @@
 import { from } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
-import { map, mergeMap } from 'rxjs/operators';
+import { map, mergeMap, mapTo } from 'rxjs/operators';
 import { ofType } from 'redux-observable';
 
-import { FETCH_CITIES, fetchCitiesSuccess } from '../actions';
+import {
+  FETCH_CITIES,
+  fetchCitiesSuccess,
+  FETCH_DEPARTEMENTS,
+  resetDepartement
+} from '../actions';
 
 import { getCitiesByDepartement, hasCitiesForDepartement } from '../selectors';
 
@@ -35,4 +40,7 @@ const getCitiesByDepartementEpic = (action$: any, state$: any) =>
     })
   );
 
-export { getCitiesByDepartementEpic };
+const resetDepartementEpic = (action$: any) =>
+  action$.pipe(ofType(FETCH_DEPARTEMENTS), mapTo(resetDepartement()));
+
+export { getCitiesByDepartementEpic, resetDepartementEpic };

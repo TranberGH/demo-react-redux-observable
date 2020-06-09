@@ -20,7 +20,7 @@ const getCitiesEpic = (action$: any, state$: any) =>
     ),
     map((cities: any) => {
       // Partial<City[]>
-      console.log('search cities : ', cities);
+      // console.log('search cities : ', cities);
       return searchCitiesSuccess(cities.features);
     })
   );

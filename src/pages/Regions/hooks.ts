@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Region, Departement, City } from '../../types';
 import {
   getDepartementsByRegion,
-  getCitiesByDepartement
+  getDepartementRegion,
+  getCitiesByDepartement,
+  getCityDepartement
 } from '../../store/selectors';
 import {
   fetchDepartements,
@@ -16,6 +18,9 @@ function usePlaces() {
   const regions: Region[] = useSelector((state: any) => state.regions.regions);
   const departements: Departement[] = useSelector(getDepartementsByRegion);
   const cities: City[] = useSelector(getCitiesByDepartement);
+
+  const region: any = useSelector(getDepartementRegion);
+  const departement: any = useSelector(getCityDepartement);
 
   const dispatch = useDispatch();
   const fetchDepartementsHandler = useCallback((evt: React.SyntheticEvent) => {
@@ -39,7 +44,9 @@ function usePlaces() {
     fetchCitiesHandler,
     regions,
     departements,
-    cities
+    cities,
+    region,
+    departement
   };
 }
 
