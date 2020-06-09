@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { useSelector } from 'react-redux';
 
 function useSearch(searchFn: Function) {
   const searchAddress = useCallback((evt: React.SyntheticEvent) => {

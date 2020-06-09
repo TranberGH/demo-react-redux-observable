@@ -2,8 +2,8 @@ import {
   getDepartementsByRegion,
   hasDepartementsForRegion
 } from './departements';
-
 import { getCitiesByDepartement, hasCitiesForDepartement } from './cities';
+import { getSearchText } from './search';
 
 export {
   // Departements
@@ -11,5 +11,7 @@ export {
   hasDepartementsForRegion,
   // Cités
   getCitiesByDepartement,
-  hasCitiesForDepartement
+  hasCitiesForDepartement,
+  // Search
+  getSearchText
 };
