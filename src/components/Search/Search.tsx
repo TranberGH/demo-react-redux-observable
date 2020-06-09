@@ -10,7 +10,7 @@ interface SearchProps {
 
 function Search(props: SearchProps) {
   const { search } = props;
-  const { searchAddress } = useSearch(search);
+  const { searchText, searchAddress } = useSearch(search);
 
   return (
     <div className="search-block">
@@ -21,6 +21,7 @@ function Search(props: SearchProps) {
           type="text"
           placeholder="Veuillez saisir une adresse"
           onChange={searchAddress}
+          value={searchText}
         />
       </p>
     </div>
