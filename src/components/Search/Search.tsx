@@ -1,20 +1,11 @@
 import React, { useCallback } from 'react';
 
+import { useSearch } from './hooks';
+
 import './Search.scss';
 
 interface SearchProps {
   search: Function;
-}
-
-function useSearch(searchFn: Function) {
-  const searchAddress = useCallback((evt: React.SyntheticEvent) => {
-    const searchValue = encodeURIComponent(
-      (evt.target as HTMLInputElement).value
-    );
-    searchFn(searchValue);
-  }, []);
-
-  return { searchAddress };
 }
 
 function Search(props: SearchProps) {
