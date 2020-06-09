@@ -1,5 +1,5 @@
 import ResultList from './ResultList/ResultList';
 import Search from './Search/Search';
-import SearchPagination from './SearchPagination/SearchPagination';
+import SearchPagination from './SearchPagination';
 
 export { ResultList, Search, SearchPagination };

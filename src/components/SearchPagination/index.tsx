@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 
 import { getPageCount } from '../../core';
+import { usePagination } from './hooks';
 
 interface SearchPaginationProps {
   currentPage: number;
@@ -8,18 +9,6 @@ interface SearchPaginationProps {
   rowsPerPage: number;
   displayPageCount: number;
   updateCurrentPage: (currentPage: number) => void;
-}
-
-function usePagination(updateFn: any) {
-  const updateCurrentPage = useCallback((evt: React.SyntheticEvent) => {
-    const currentPage = (evt.target as HTMLElement).dataset.page || '';
-    const page = Number.parseInt(currentPage);
-    if (!isNaN(page)) {
-      updateFn(page);
-    }
-  }, []);
-
-  return { updateCurrentPage };
 }
 
 function SearchPagination(props: SearchPaginationProps) {

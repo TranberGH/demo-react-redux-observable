@@ -1,4 +1,6 @@
-import React, { useCallback } from 'react';
+import React from 'react';
+
+import { useSearch } from './hooks';
 
 import './Search.scss';
 
@@ -6,20 +8,9 @@ interface SearchProps {
   search: Function;
 }
 
-function useSearch(searchFn: Function) {
-  const searchAddress = useCallback((evt: React.SyntheticEvent) => {
-    const searchValue = encodeURIComponent(
-      (evt.target as HTMLInputElement).value
-    );
-    searchFn(searchValue);
-  }, []);
-
-  return { searchAddress };
-}
-
 function Search(props: SearchProps) {
   const { search } = props;
-  const { searchAddress } = useSearch(search);
+  const { searchText, searchAddress } = useSearch(search);
 
   return (
     <div className="search-block">
@@ -30,6 +21,7 @@ function Search(props: SearchProps) {
           type="text"
           placeholder="Veuillez saisir une adresse"
           onChange={searchAddress}
+          value={searchText}
         />
       </p>
     </div>
