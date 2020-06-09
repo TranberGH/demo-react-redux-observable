@@ -3,7 +3,7 @@ import {
   hasDepartementsForRegion
 } from './departements';
 import { getCitiesByDepartement, hasCitiesForDepartement } from './cities';
-import { getSearchText } from './search';
+import { getSearchResult, getSearchText } from './search';
 
 export {
   // Departements
@@ -13,5 +13,6 @@ export {
   getCitiesByDepartement,
   hasCitiesForDepartement,
   // Search
-  getSearchText
+  getSearchText,
+  getSearchResult
 };
