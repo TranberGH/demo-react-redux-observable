@@ -7,7 +7,18 @@ const CITY_CONTEXT_SEPARATOR = /\s*,\s*/;
 function getCityFromState(state: any) {
   if (state) {
     const { city, postcode, context } = state;
-    const { departement, region } = parseCityContext(context);
+    let departement = null;
+    let region = null;
+
+    if (context) {
+      const cityContext = parseCityContext(context);
+      departement = cityContext.departement;
+      region = cityContext.region;
+    } else {
+      const { departement: cityDept, region: cityRegion } = state;
+      departement = cityDept;
+      region = cityRegion;
+    }
 
     return {
       city,

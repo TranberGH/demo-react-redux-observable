@@ -12,6 +12,8 @@ interface City {
   nom: string;
   code: string;
   postcode: string;
+  codeDepartement?: string;
+  codeRegion?: string;
 }
 
 // Compliant action with "Flux Standard Action"

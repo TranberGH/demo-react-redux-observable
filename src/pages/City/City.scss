@@ -1,11 +1,16 @@
 .city-header {
-  margin: 0 0 2em;
+  margin: 0 0 1.2em;
+  padding: 0 0 0 1em;
+  border-left: 1em solid $main-color;
+  border-bottom: 0.1em solid $main-color;
 }
 
 .city-props {
-  box-shadow: 0 0 0.2em 0.2em rgba(0, 0, 0, 0.2);
-  border-radius: 0.5em;
+  // box-shadow: 0 0 0.2em 0.2em rgba(0, 0, 0, 0.2);
+  // border-radius: 0.5em;
   padding: 2em;
+  background-color: $main-color;
+  color: #fff;
 
   dd {
     margin: 0 0 0.5em;
@@ -14,9 +19,18 @@
 }
 
 @media (min-width: 410px) {
+  .city-props {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   dt {
-    float: left;
-    clear: left;
+    // float: left;
+    // clear: left;
     width: 30%;
+  }
+
+  dd {
+    width: 70%;
   }
 }

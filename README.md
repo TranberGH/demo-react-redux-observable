@@ -1,33 +1,31 @@
 # React et webpack, api cities
 
-Empty project.
+## Build et exécution sur localhost
 
-## Building and running on localhost
-
-First install dependencies:
+Installation des dépendences:
 
 ```sh
 npm install
 ```
 
-To run in hot module reloading mode:
+Lancement avec hot module reloading :
 
 ```sh
 npm start
 ```
 
-To create a production build:
+Build de production :
 
 ```sh
 npm run build:prod
 ```
 
-To create a development build:
+Build de développement :
 
 ```sh
 npm run build:dev
 ```
 
-## Running
+## Lancer
 
-Open the file `dist/index.html` in your browser
+Ouvrir le fichier `dist/index.html` dans un navigateur

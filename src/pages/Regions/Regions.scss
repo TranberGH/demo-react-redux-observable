@@ -4,12 +4,13 @@
   select {
     font-family: inherit;
     font-size: 0.9em;
-    border-radius: 0.2em;
-    border: $input-border;
+    // border-radius: 0.2em;
+    border: none; //$input-border;
     padding: 0.5em 1em;
     font-weight: bold;
-    background-color: $light-color;
+    background-color: $main-color;
     min-width: 20em;
+    color: #fff;
   }
 }
 

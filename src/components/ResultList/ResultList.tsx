@@ -29,11 +29,16 @@ function ResultList(props: ResultListProps) {
     <>
       {items && (
         <ul className={listClasses.join(' ') || 'result-list'}>
-          {items.map(item => {
-            const { id: itemId, name: itemName } = item.properties;
+          {items.map((item: any, index: number) => {
+            const {
+              id: itemId,
+              name: itemName,
+              postcode,
+              city
+            } = item.properties;
             return (
               <li
-                key={`city-${itemId}`}
+                key={`city-${index}`}
                 className={itemClasses.join(' ') || 'result-item'}
               >
                 {link && (
@@ -43,7 +48,7 @@ function ResultList(props: ResultListProps) {
                       state: item.properties
                     }}
                   >
-                    {itemName}
+                    {itemName} ({postcode} {city})
                   </Link>
                 )}
                 {!link && itemName}

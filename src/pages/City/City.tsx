@@ -2,17 +2,29 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import { getCityFromState } from '../../core';
+import { TopNav } from '../../components';
 
 import './City.scss';
+
+const navItems = [
+  {
+    url: '/',
+    text: 'Accueil'
+  },
+  {
+    url: '/regions',
+    text: 'Régions'
+  }
+];
 
 function City() {
   const { state } = useLocation(); // hook useLocation -> see react-router
   const { city, postcode, departement, region } = getCityFromState(state);
   return (
     <>
-      <p className="top-block">
-        <Link to="/">Accueil</Link>
-      </p>
+      <div className="top-block">
+        <TopNav items={navItems} />
+      </div>
       {state && (
         <div className="city-detail">
           <header className="city-header">

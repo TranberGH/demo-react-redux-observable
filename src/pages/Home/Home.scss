@@ -2,3 +2,14 @@
   margin: 1em 0 2em;
   // padding:
 }
+
+.city-item {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 0.5em 1em;
+  color: #fff;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

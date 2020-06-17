@@ -29,16 +29,15 @@ function Regions(props: RegionsProps) {
       <h2 className="search-title">Rechercher par régions et départements</h2>
 
       <p className="choice-block">
-        <select onChange={fetchDepartementsHandler}>
+        <select
+          onChange={fetchDepartementsHandler}
+          defaultValue={currentRegion}
+        >
           <option key={`region-${OPTION_NONE}`} value={OPTION_NONE}>
             Choisissez une région
           </option>
           {regions.map(region => (
-            <option
-              key={`region-${region.code}`}
-              value={region.code}
-              selected={currentRegion === region.code}
-            >
+            <option key={`region-${region.code}`} value={region.code}>
               {region.nom}
             </option>
           ))}
@@ -47,7 +46,10 @@ function Regions(props: RegionsProps) {
 
       {departements.length > 0 && (
         <p className="choice-block">
-          <select onChange={fetchCitiesHandler}>
+          <select
+            onChange={fetchCitiesHandler}
+            defaultValue={currentDepartement}
+          >
             <option key={`departement-${OPTION_NONE}`} value={OPTION_NONE}>
               Choisissez un département
             </option>
@@ -55,7 +57,6 @@ function Regions(props: RegionsProps) {
               <option
                 key={`departement-${departement.code}`}
                 value={departement.code}
-                selected={currentDepartement === departement.code}
               >
                 {departement.nom}
               </option>
@@ -68,7 +69,19 @@ function Regions(props: RegionsProps) {
         <ul className="cities-list">
           {cities.map(city => (
             <li key={`city-${city.code}`} className="city-item">
-              {city.nom}
+              <Link
+                to={{
+                  pathname: `/city/${city.code}`,
+                  state: {
+                    city: city.nom,
+                    postcode: city.code,
+                    departement: city.codeDepartement,
+                    region: city.codeRegion
+                  }
+                }}
+              >
+                {city.nom}
+              </Link>
             </li>
           ))}
         </ul>

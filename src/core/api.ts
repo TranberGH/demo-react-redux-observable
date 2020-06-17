@@ -50,11 +50,20 @@ function getCitiesByDepartementUrl(departementCode: string) {
   ])}`;
 }
 
+/**
+ * Get city by code
+ * @param cityCode {string} - city code
+ */
+function getCityUrl(cityCode: string) {
+  return `${zonesApiUrl}${createPath(['communes', cityCode])}`;
+}
+
 export {
   search,
   // Urls
   getAllRegionsUrl,
   searchUrl,
   getDepartementsByRegionUrl,
-  getCitiesByDepartementUrl
+  getCitiesByDepartementUrl,
+  getCityUrl
 };

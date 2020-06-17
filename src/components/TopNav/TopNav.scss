@@ -1,0 +1,12 @@
+.top-nav {
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -0.5rem;
+  }
+
+  .nav-item {
+    margin-left: 0.5rem;
+  }
+}
