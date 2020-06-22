@@ -1,5 +1,12 @@
 # React et webpack, api cities
 
+Démo React, Redux avec redux-observable
+
+- Trouver des villes à l'aide d'une partie d'adresse
+- Trouver des villes par région puis département
+
+Utilisant l'api geo.api.gouv.fr
+
 ## Build et exécution sur localhost
 
 Installation des dépendences:
