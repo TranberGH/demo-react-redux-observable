@@ -9,7 +9,7 @@ Utilisant l'api geo.api.gouv.fr
 
 ## Build et exécution sur localhost
 
-Installation des dépendences:
+Installation des dépendances:
 
 ```sh
 npm install
